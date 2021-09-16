@@ -1,13 +1,115 @@
 <html>
-<form action="/login/" method="POST" name="form1">
-    {% csrf_token %}
-    {% if status == "login" %}
-       	<div><a href="/logout/">登出系統</a></div>
-	{% else %}
-        <div>帳號：<input type="text" name="username" id="username"/></div>
-        <div>密碼：<input type="password" name="password" id="password"/></div> 
-        <div><input type="submit" name="button" id="button" value="登入" /></div>	
-    {% endif %}   
-    <span style="color:red">{{message}}</span>
-</form>
+
+
+<head>{% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static '/css/login.css' %}">
+    <style>
+        body {
+            background: content-box radial-gradient( closest-side, #198754, rgb(6, 77, 33));
+        }
+        
+        form.loginform {
+            width: 50%;
+            padding: 5%;
+            margin: auto;
+            margin-top: 15%;
+            border-radius: 30px;
+            border: #000000 solid 2px;
+            /* background: border-box radial-gradient(farthest-side,
+        #198754, rgb(71, 197, 166), rgb(34, 173, 132)); */
+            background-color: #3bb78f;
+            background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+        }
+        
+        .submit,
+        a.logout {
+            margin: auto;
+            background-color: #e9ecef;
+            color: black;
+        }
+        
+        span.loginmessage {
+            text-align: center;
+        }
+        
+        input.form-control {
+            width: auto;
+            display: inline-block;
+        }
+        
+        form.form-inline {
+            position: absolute;
+            right: 3%;
+        }
+        
+        h3 {
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- .navbar-expand-{sm|md|lg|xl}決定在哪個斷點以上就出現漢堡式選單 -->
+    <!-- navbar-dark 文字顏色 .bg-dark 背景顏色 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- .navbar-brand 左上LOGO位置 -->
+        <a class="navbar-brand" href="/index">
+            <!-- <img src="{% static  'images/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt=""> -->
+            <span class="h3 mx-1">WebDesign</span>
+        </a>
+        <!-- .navbar-toggler 漢堡式選單按鈕 -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <!-- .navbar-toggler-icon 漢堡式選單Icon -->
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <!-- .collapse.navbar-collapse 用於外層中斷點群組和隱藏導覽列內容 -->
+        <!-- 選單項目&漢堡式折疊選單 -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- active表示當前頁面 -->
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index">首頁</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">關於我</a>
+                </li>
+                <!-- .dropdown Navbar選項使用下拉式選單 -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">作品集</a>
+                    <!-- .dropdown-menu 下拉選單內容 -->
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">網頁設計</a>
+                        <a class="dropdown-item" href="#">平面設計</a>
+                    </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-2 ">
+                <input class="form-control me-2 mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0 search" type="submit">Search
+        </button>
+            </form>
+        </div>
+
+    </nav>
+    <form action="/login/" method="POST" name="form1" class="loginform">
+        <h3><span class="loginmessage" style="color:rgb(255, 255, 255)">{{ message}}</span></h3><br> {% csrf_token %} {% if status == "login" %}
+        <div class="row">
+            <div class="input-group mb-3 "><a class="logout btn btn-outline-secondary" href="/logout/">Logout</a>
+            </div>
+            {% else %}
+            <div class="input-group mb-3 "> <span class="input-group-text" id="basic-addon1">帳號：</span><input type="text" name="username" id="username" class="form-control" placeholder="Username" /></div>
+            <div class="input-group mb-3 "> <span class="input-group-text" id="basic-addon1">密碼：</span><input type="password" name="password" id="password" class="form-control" placeholder="Password" /></div>
+            <div class="input-group mb-3 "><input class="btn btn-outline-secondary submit" type="submit" name="button" id="button" value="login" /></div>
+            {% endif %}
+            <!-- <span class="loginmessage" style="color:red">{{ message}}</span> -->
+        </div>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+
 </html>

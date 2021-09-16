@@ -1,0 +1,42 @@
+body {
+    background: content-box radial-gradient( closest-side, #198754, rgb(6, 77, 33));
+}
+
+form.loginform {
+    width: 50%;
+    padding: 5%;
+    margin: auto;
+    margin-top: 15%;
+    border-radius: 30px;
+    border: #000000 solid 2px;
+    /* background: border-box radial-gradient(farthest-side, #198754, rgb(71, 197, 166), rgb(34, 173, 132));
+ */
+    background-color: #3bb78f;
+    background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+}
+
+.submit,
+a.logout {
+    margin: auto;
+    background-color: #e9ecef;
+    color: black;
+}
+
+span.loginmessage {
+    text-align: center;
+}
+
+input.form-control {
+    width: auto;
+    display: inline-block;
+}
+
+form.form-inline {
+    position: absolute;
+    right: 3%;
+}
+
+h3 {
+    width: 100%;
+    text-align: center;
+}
