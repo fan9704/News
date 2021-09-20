@@ -20,7 +20,8 @@ from newsapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-	path('index/', views.index),
+	path('index/<str:pageindex>', views.index),
+    path('detail/<int:detailid>',views.detail),
     path('login/',views.login),
     path('logout/',views.logout),
 ]
