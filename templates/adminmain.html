@@ -1,8 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block login%}
-<div class="toplogin">
-    <a style="  vertical-align: middle;   text-decoration: none; " href="/login" title="登入管理介面"><img src="{% static 'images/Lock.png' %}" alt="登入管理介面" width="32" height="32">登入管理介面</a>
-</div>
-{% endblock %} {% block content %}
+{% extends 'baseadmin.html'%} {% load static %} {% block append%}
+<a href="/newsadd/" title="新增新聞"><img src="{% static 'images/append.png'%}" alt="add news" width="32" height="32">新增新聞</a>
+{%endblock%} {% block content %}
 <div class="contentbox" width="100%">
     <table width="100%">
         <tr>
@@ -19,6 +17,10 @@
             <td><a href="/detail/{{unit.id}} ">{{unit.title}}</a></td>
             <td>{{unit.pubtime}}</td>
             <td>{{unit.press}}</td>
+            <td>
+                <a href="/newsedit/{{unit.id}}" title="newsedit"><img src="{% static 'images/note_edit.png'%}" width="16" height="16" alt="">編輯新聞</a>
+                <a href="/newsdelete/{{unit.id}}" title="newsdelete"><img src="{% static 'images/cross.png'%}" width="16" height="16" alt="">刪除新聞</a>
+            </td>
         </tr>
         {% empty %}
         <div class="status warning">
@@ -28,14 +30,14 @@
     </table>
     <div class="topfunction">
 
-        {% if currentpage > 1 %}
-        <a href="/index/1" title="上一頁">
+        {% if currentpage >= 1 %}
+        <a href="/adminmain/1" title="上一頁">
             <img src="{% static 'images/prevpage.png' %}" alt="上一頁" width="64" height="24" /></a>
         {% endif %}
-
-        <a href="/index/2" title="下一頁">
+        <a href="/adminmain/2" title="下一頁">
             <img src="{% static 'images/nextpage.png' %}" alt="下一頁" width="64" height="24" /></a>
 
     </div>
 </div>
-{% endblock %}
+
+{% endblock%}

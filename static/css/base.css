@@ -212,3 +212,8 @@ table tr td a:hover {
 .newsinfo * {
     vertical-align: text-bottom;
 }
+
+.toplogin {
+    vertical-align: middle;
+    text-decoration: none;
+}

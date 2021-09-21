@@ -24,4 +24,11 @@ urlpatterns = [
     path('detail/<int:detailid>',views.detail),
     path('login/',views.login),
     path('logout/',views.logout),
+    path('adminmain/',views.adminmain),
+    path('adminmain/<str:pageindex>/',views.adminmain),
+    path('newsadd/',views.newsadd),
+    path('newsedit/<int:newsid>/',views.newsedit),
+    path('newsedit/<int:newsid>/<str:edittype>/',views.newsedit),
+    path('newsdelete/<int:newsid>/',views.newsdelete),
+    path('newsdelete/<int:newsid>/<str:deletetype>/',views.newsdelete),
 ]
